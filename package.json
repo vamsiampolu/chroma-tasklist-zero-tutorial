@@ -16,6 +16,7 @@
     "@kadira/storybook": "^2.21.0",
     "apollo-test-utils": "^0.3.0",
     "graphql-tools": "^0.11.0",
+    "react-router": "^4.1.1",
     "react-scripts": "0.9.5",
     "storyshots": "^3.2.2"
   },

@@ -8,10 +8,10 @@ const withData = graphql(
   gql`query InboxQuery {
     me {
       pinnedTasks: tasks(state: TASK_PINNED) {
-        ...TaskListTaskFragment
+        ...TaskListFragment
       }
       inboxTasks: tasks(state: TASK_INBOX) {
-        ...TaskListTaskFragment
+        ...TaskListFragment
       }
     }
   }
@@ -40,9 +40,9 @@ const withData = graphql(
 
 const withOnSnoozeTask = graphql(
   gql`
-    mutation onSnoozeTaskMutation($taskId: ObjID!) {
+    mutation onSnoozeTaskMutation($taskId: ID!) {
       updateTask(id: $taskId, input: { state: TASK_SNOOZED }) {
-        ...TaskListTaskFragment
+        ...TaskListFragment
       }
     }
     ${TaskList.fragments.task}`,
