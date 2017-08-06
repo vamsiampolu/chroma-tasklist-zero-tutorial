@@ -1,18 +1,23 @@
 import React, {Component} from 'react'
-import ApolloClient, {createNetworkInterface} from 'apollo-client'
-import {ApolloProvider} from 'react-apollo'
-import {BrowserRouter} from 'react-router-dom'
-import './App.css'
+import {Route} from 'react-router-dom'
 
-const {REACT_APP_API_HOST = 'http://localhost:3000'} = process.env
-const networkInterface = createNetworkInterface({
-  uri: `${REACT_APP_API_HOST}/graphql`
-})
-const client = new ApolloClient({networkInterface})
+import MenuScreen from './screens/MenuScreen'
+import InboxScreen from './screens/InboxScreen'
+import SnoozedScreen from './SnoozedScreen'
+import ArchivedScreen from './ArchivedScreen'
 
 class App extends Component {
   render () {
-    return <ApolloProvider client={client}><BrowserRouter /></ApolloProvider>
+    return (
+      <div id='container' className='menuOpen'>
+        <MenuScreen />
+        <div id='content-container'>
+          <Route exact path='/' component={InboxScreen} />
+          <Route exact path='/snoozed' component={SnoozedScreen} />
+          <Route exact path='/archived' component={ArchivedScreen} />
+        </div>
+      </div>
+    )
   }
 }
 
